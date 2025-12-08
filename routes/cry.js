@@ -12,4 +12,17 @@ router.get('/', async function (request, response) {
   }
 })
 
+router.post('/', async function (request, response) {
+    console.log(request.body);
+  try {
+    const newCry = await Cry.create({
+      ...request.body
+    });
+    response.json(newCry);
+  } catch (error) {
+    console.log(error);
+    response.send('Something went wrong.');
+  }
+})
+
 module.exports = router;
