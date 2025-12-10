@@ -1,5 +1,6 @@
 body {
-  padding: 50px;
+  padding: 0;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,12 +8,106 @@ a {
   color: #00B7FF;
 }
 
+.layout {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+}
+
 #container {
   display: flex;
+  justify-content: center;
+  align-items: top;
+
+  flex: 1 1 100%;
+}
+
+#form {
+  flex: 1 1 100%;
+  text-align: center;
+  color:white;
 }
 
 .cryStory {
   border: black solid 1px;
   width: fit-content;
   padding: 2em;
+}
+
+.eye {
+  display: flex;
+  justify-content: center;
+}
+
+.closed {
+  width: 5em;
+  height: 5em;
+  background: url(/public/images/closed_eye.png) center/cover;
+}
+
+.closed:hover {
+  background: url(/public/images/open_eye.png) center/cover;
+}
+
+.open {
+  width: 5em;
+  height: 5em;
+  background: url(/public/images/open_eye.png) center/cover;
+}
+
+#overlay {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.208);
+
+  position: absolute;
+  top: 0;
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cryStory {
+  background: white;
+}
+
+.tearAnim {
+  position: relative;
+  background: rgb(118, 170, 206);
+  
+  width: 3em;
+  height: 3em;
+  border-radius: 0 50% 50% 50%;
+  transform: rotate(45deg);
+  margin-top: 20px;
+
+  z-index: -1;
+
+  animation: tearfall 1s infinite ease-in-out;
+}
+
+@keyframes tearfall {
+    0% {
+        top: 0;
+        opacity: 100;
+    }
+
+    100% {
+        top: 20em;
+        opacity: 0;
+    }
 }
