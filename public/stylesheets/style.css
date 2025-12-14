@@ -2,6 +2,13 @@ body {
   padding: 0;
   margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  width: 100vw;
+  height: 100vh;
+
+  background: white;
+
+  font-size: 1em;
+  overflow: hidden;
 }
 
 a {
@@ -9,14 +16,12 @@ a {
 }
 
 .layout {
-  width: 100vw;
-  height: 100vh;
   padding: 0;
   margin: 0;
+  width: 100vw;
+  height: 100vh;
 
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 h1 {
@@ -26,32 +31,90 @@ h1 {
 
 #container {
   display: flex;
-  justify-content: center;
-  align-items: top;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
-  flex: 1 1 100%;
+  width: 70vw;
+
+  overflow: scroll;
+  flex: 1 1 70%;
+}
+
+.divider {
+  width: 100vw;
+  height: 20vh;
+  background: rgba(255, 0, 0, 0);
 }
 
 #form {
-  flex: 1 1 100%;
-  text-align: center;
-  color:white;
+  color: rgb(255, 255, 255);
+  width: 30em;
+  flex: 1 1 30%;
+
+  background: rgb(13, 13, 168);
+  display: flex;
+  flex-wrap: wrap;
+
+  z-index: 10;
+
+  overflow: scroll;
 }
 
-.cryStory {
-  border: black solid 1px;
-  width: fit-content;
+#messageBox {
+  width: 40em;
+  height: 15em;
+  background: rgb(203, 208, 216);
+  color: black;
+
+  overflow: auto;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#direction {
+  color: rgb(13, 13, 168);
+}
+
+.delete {
+  float: right;
+  z-index: 10;
+}
+
+.card {
+  border: 1px solid black;
   padding: 2em;
+
+  width: fit-content;
+  flex: 1 1 20%;
+  background: white;
+}
+
+.area {
+  flex: 1 1 100%;
+  padding: 0 1em;
+}
+
+input {
+  float: right;
+}
+
+#reason {
+  width: 100%;
+  height: 5em;
+  resize: none;
 }
 
 .eye {
+  width: 10em;
+  height: 10em;
+
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .closed {
-  width: 5em;
-  height: 5em;
   background: url(/public/images/closed_eye.png) center/cover;
 }
 
@@ -60,54 +123,138 @@ h1 {
 }
 
 .open {
-  width: 5em;
-  height: 5em;
   background: url(/public/images/open_eye.png) center/cover;
 }
 
-#overlay {
-  width: 100vw;
-  height: 100vh;
-  padding: 0;
-  margin: 0;
-  background: rgba(0, 0, 0, 0.208);
-
-  position: absolute;
-  top: 0;
-  z-index: 1;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.highlight {
+  background: url(/public/images/highlight_eye.png) center/cover;
 }
 
-.cryStory {
-  background: white;
-}
+/* animation tears */
 
 .tearAnim {
   position: relative;
-  background: rgb(118, 170, 206);
-  
-  width: 3em;
-  height: 3em;
+  background: #76aace;
+
   border-radius: 0 50% 50% 50%;
   transform: rotate(45deg);
   margin-top: 20px;
 
-  z-index: -1;
+  z-index: -50;
 
-  animation: tearfall 1s infinite ease-in-out;
+  animation: tearfall 1s infinite ease-in
+}
+
+.size1 {
+  width: 1em;
+  height: 1em;
+}
+
+.size2 {
+  width: 2em;
+  height: 2em;
+}
+
+.size3 {
+  width: 3em;
+  height: 3em;
+}
+
+.size4 {
+  width: 4em;
+  height: 4em;
+}
+
+.size5 {
+  width: 6em;
+  height: 6em;
 }
 
 @keyframes tearfall {
-    0% {
-        top: 0;
-        opacity: 100;
-    }
+  0% {
+    top: 0;
+    opacity: 100;
+  }
 
-    100% {
-        top: 20em;
-        opacity: 0;
-    }
+  100% {
+    top: 30em;
+    opacity: 0;
+  }
+}
+
+/* rating system */
+.rate {
+  height: 2em;
+}
+
+.rate:not(:checked)>input {
+  position: absolute;
+  top: -9999px;
+}
+
+.rate:not(:checked)>label {
+  float: right;
+  width: 1.5em;
+  height: 1.5em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 2em;
+  background: url(/public/images/unchecked.png) center/cover;
+}
+
+.rate:not(:checked)>label:before {
+  background: url(/public/images/unchecked.png) center/cover;
+}
+
+.rate>input:checked~label {
+  background: url(/public/images/checked.png) center/cover;
+}
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+  background: url(/public/images/checked.png) center/cover;
+}
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
+  background: url(/public/images/checked.png) center/cover;
+}
+
+/* waves bg */
+::selection{background-color: rgb(255, 255, 255); color: white;}
+.parallax > use{
+  animation:move-forever 12s linear infinite;
+  &:nth-child(1){animation-delay:-2s;}
+  &:nth-child(2){animation-delay:-2s; animation-duration:7s}
+  &:nth-child(3){animation-delay:-4s; animation-duration:5s}
+}
+
+@keyframes move-forever{
+  0%{transform: translate(-90px , 0%)}
+  100%{transform: translate(85px , 0%)} 
+}
+
+.editorial {
+  display: block;
+  width: 100vw;
+  height: 12em;
+  max-height: 100vh;
+  margin: 0;
+
+  position: absolute;
+  bottom: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+/*prevent many large-by-comparison ripples by shrinking the height*/
+@media (max-width:50em){
+  .content h1{font-size: 12vmax}
+  .editorial{height:17vw;}
 }

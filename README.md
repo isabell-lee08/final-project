@@ -24,6 +24,15 @@
 - List any third-party assets used in the project (e.g., sound effects, images, fonts) and provide proper attribution.
 - Acknowledge any resources, tutorials, or references you used to help complete the project.
 
+<a href="https://www.flaticon.com/free-icons/water-drop" title="water-drop icons">Water-drop icons created by Good Ware - Flaticon</a>
+
+https://codepen.io/hesguru/pen/BaybqXv
+
+https://codepen.io/andyfitz/pen/aZrKdV
+
+https://www.freepik.com/icon/view_11450606
+https://www.freepik.com/icon/hide_11238328#fromView=search&page=1&position=0&uuid=c1e8f3c3-059e-4e06-80a9-c931989d551b
+
 ## Future Enhancements
 
 - List any features you would’ve liked to add if given more time
