@@ -5,14 +5,20 @@ body {
   width: 100vw;
   height: 100vh;
 
-  background: white;
-
-  font-size: 1em;
+  background: rgb(255, 255, 255);
   overflow: hidden;
 }
 
 a {
   color: #00B7FF;
+}
+
+h1 {
+  padding: 0 .5em;
+}
+
+h2 {
+  text-align: center;
 }
 
 .layout {
@@ -24,9 +30,8 @@ a {
   display: flex;
 }
 
-h1 {
-  padding: 0;
-  margin: 0;
+#top {
+ display: inline;
 }
 
 #container {
@@ -37,7 +42,7 @@ h1 {
   width: 70vw;
 
   overflow: scroll;
-  flex: 1 1 70%;
+  flex: 1 1 65%;
 }
 
 .divider {
@@ -49,22 +54,26 @@ h1 {
 #form {
   color: rgb(255, 255, 255);
   width: 30em;
-  flex: 1 1 30%;
+  flex: 1 1 35%;
 
   background: rgb(13, 13, 168);
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 
   z-index: 10;
 
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #messageBox {
   width: 40em;
-  height: 15em;
+  height: 17em;
   background: rgb(203, 208, 216);
   color: black;
+  padding: 0;
 
   overflow: auto;
 
@@ -74,25 +83,61 @@ h1 {
 
 #direction {
   color: rgb(13, 13, 168);
+
+  margin: 2em;
+}
+
+#add-button {
+  width: 100%;
+  height: 3em;
+
+  margin: 2em 0;
+}
+
+button {
+  background: white;
+}
+
+button:hover {
+  background: yellow;
+  color: blue;
+}
+
+button.delete:hover {
+  background: rgb(34, 189, 255);
+  color: white;
 }
 
 .delete {
-  float: right;
   z-index: 10;
+  text-align: right;
+
+  max-height: fit-content;
 }
 
 .card {
   border: 1px solid black;
-  padding: 2em;
+  padding: .6em;
 
-  width: fit-content;
-  flex: 1 1 20%;
+  flex: 1 1 30%;
   background: white;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content {
+  flex: 1 1 100%;
+}
+
+.submitCry {
+  flex: 0 0 100%;
 }
 
 .area {
   flex: 1 1 100%;
-  padding: 0 1em;
+  font: 1em;
+  padding: 0em 1em;
 }
 
 input {
@@ -166,8 +211,8 @@ input {
 }
 
 .size5 {
-  width: 6em;
-  height: 6em;
+  width: 5.5em;
+  height: 5.5em;
 }
 
 @keyframes tearfall {
@@ -194,8 +239,8 @@ input {
 
 .rate:not(:checked)>label {
   float: right;
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.2em;
+  height: 1.2em;
   overflow: hidden;
   white-space: nowrap;
   cursor: pointer;
@@ -248,7 +293,7 @@ input {
   position: absolute;
   bottom: 0;
 
-  z-index: 1;
+  z-index: 0;
 
   pointer-events: none;
 }

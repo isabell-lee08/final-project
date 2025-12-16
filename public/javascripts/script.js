@@ -36,9 +36,11 @@ async function getCry() {
 
 getCry();
 
+let container = document.getElementById("container");
+let cryStory = document.getElementById("messageBox");
+
 function updateDisplay() {
     clearRate();
-    let container = document.getElementById("container")
     container.innerHTML = "";
 
     for (let i = 0; i < cryList.length; i++) {
@@ -50,11 +52,14 @@ function updateDisplay() {
 
         const tear = document.createElement('div');
         tear.classList.add('tearAnim', 'size' + cryList[i].tearsNum);
-        const cryStory = document.getElementById('messageBox');
 
         const cryStoryCard = document.createElement('div');
         cryStoryCard.classList.add('card');
         cryStoryCard.classList.add(cryList[i]._id);
+
+        const cryStoryContent = document.createElement('div');
+        cryStoryContent.classList.add('content');
+        cryStoryCard.appendChild(cryStoryContent);
 
         const cryStoryDate = document.createElement('p');
         cryStoryDate.classList.add('date');
@@ -68,9 +73,9 @@ function updateDisplay() {
         cryStoryRate.classList.add('tearsValue');
         cryStoryRate.innerHTML = cryList[i].tearsNum;
 
-        cryStoryCard.appendChild(cryStoryDate);
-        cryStoryCard.appendChild(cryStoryRate);
-        cryStoryCard.appendChild(cryStoryReason);
+        cryStoryContent.appendChild(cryStoryDate);
+        cryStoryContent.appendChild(cryStoryRate);
+        cryStoryContent.appendChild(cryStoryReason);
 
         function closeEye() {
             cryEye.classList.replace('open', 'closed');
@@ -98,17 +103,20 @@ function updateDisplay() {
                 closeEye()
             } else {
                 openEye()
+                cryStoryCard.style.background = "white"
                 const direction = document.getElementById('direction');
-                direction.innerHTML = "";
+                if (direction) {
+                    cryStory.removeChild(direction);
+                }
             }
             // click highlight
             cryStoryCard.addEventListener('pointerover', function () {
-                cryStoryCard.style.border = "4px solid gold"
+                cryStoryCard.style.background = "gold"
                 cryEye.classList.add('highlight');
             })
 
             cryStoryCard.addEventListener('pointerout', function () {
-                cryStoryCard.style.border = "1px solid black"
+                cryStoryCard.style.background = "white"
                 cryEye.classList.remove('highlight');
             })
         });
@@ -121,6 +129,7 @@ function updateDisplay() {
 const addButton = document.getElementById('add-button');
 
 addButton.addEventListener('click', function () {
+    cryStory.innerHTML = "";
     let reasonValue = document.getElementById('reason').value;
     let dateValue = document.getElementById('date').value;
     if (reasonValue && tearsValue) {
@@ -162,4 +171,29 @@ async function addCry(reasonValue, dateValue, tearsValue) {
     const data = await response.json();
     cryList = data;
     getCry()
+}
+
+// sort by tears
+const sorter = document.getElementById("tear_choices");
+
+sorter.addEventListener('change', function () {
+    let sortChoice = sorter.value;
+    sortCry(sortChoice);
+});
+
+const resetSort = document.getElementById("reset");
+
+resetSort.addEventListener('click', function () {
+    let sortChoice = "";
+    sortCry(sortChoice);
+});
+
+async function sortCry(sortChoice) {
+    const response = await fetch('/api/cry/' + sortChoice);
+    const data = await response.json();
+    cryList = data;
+
+    cryStory.innerHTML = "";
+    updateDisplay();
+    clearRate();
 }

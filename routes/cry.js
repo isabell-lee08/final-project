@@ -12,8 +12,18 @@ router.get('/', async function (request, response) {
   }
 })
 
+router.get('/:tearsNum', async function (req, res){
+    const tearsNum = req.params.tearsNum;
+    try {
+        const sortTear = await Cry.find({ tearsNum: tearsNum });
+        res.json(sortTear);
+    } catch (error) {
+        console.log(error);
+        res.send('Something went wrong.');
+    }
+})
+
 router.post('/', async function (request, response) {
-    console.log(request.body);
   try {
     const newCry = await Cry.create({
       ...request.body
