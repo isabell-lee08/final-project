@@ -2,37 +2,33 @@
 
 ## Live Demo
 
-- Include a link to the live version of the project hosted on Render.
+- https://final-project-m1eo.onrender.com/
 
 ## Project Overview
 
-- Briefly describe the project and its purpose.
+- Spilled Milk is an archive where users can anonymously share a time they cried, for whatever reason it may be. The entries can range from light-hearted and trivial, to deeply personal miseries.
 
 ## Endpoints
 
-- List all the endpoints of the API in this project with a brief description of what each endpoint does.
+- GET (/): gets all anecdotes from the database
+- GET (/:tearsNum): sorts the data based on tear rating
+- POST (/): submits an experience to the database
 
 ## Technologies Used
 
-- List the technologies and tools used in the project:
-    - **Languages**: HTML, CSS, JavaScript
-    - **Libraries**: (e.g., GSAP for animations)
-    - **Other**: Figma for design, Adobe Illustrator for illustrations, OpenAI for A.I. generated assets, etc.
+- HTML, CSS, JavaScript
+- Clip Studio Paint, for editing assets
 
 ## Credits
 
-- List any third-party assets used in the project (e.g., sound effects, images, fonts) and provide proper attribution.
-- Acknowledge any resources, tutorials, or references you used to help complete the project.
-
-<a href="https://www.flaticon.com/free-icons/water-drop" title="water-drop icons">Water-drop icons created by Good Ware - Flaticon</a>
-
-https://codepen.io/hesguru/pen/BaybqXv
-
-https://codepen.io/andyfitz/pen/aZrKdV
-
-https://www.freepik.com/icon/view_11450606
-https://www.freepik.com/icon/hide_11238328#fromView=search&page=1&position=0&uuid=c1e8f3c3-059e-4e06-80a9-c931989d551b
+- <a href="https://www.flaticon.com/free-icons/water-drop" title="water-drop icons">Water-drop icons created by Good Ware - Flaticon</a>
+- https://codepen.io/hesguru/pen/BaybqXv (rating system template)
+- https://codepen.io/andyfitz/pen/aZrKdV (background waves animation)
+- https://www.freepik.com/icon/view_11450606 (icon)
+- https://www.freepik.com/icon/hide_11238328#fromView=search&page=1&position=0&uuid=c1e8f3c3-059e-4e06-80a9-c931989d551b (icon)
 
 ## Future Enhancements
 
-- List any features you would’ve liked to add if given more time
+- Cleaner layout and styling
+- Mobile flexibility
+- Allow users edit or delete their submissions
