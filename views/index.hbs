@@ -1,7 +1,15 @@
 <div class="layout">
 
     <div id="form">
-        <h1>{{title}}</h1>
+        <div id="desc">
+            <h1>{{title}}</h1>
+            <p>Spilled Milk is an archive where users can anonymously share a time they cried, for whatever reason it
+                may be.</p>
+        </div>
+        <div class="area" id="messageBox">
+            <p id="direction">Select an eye to view an anecdote.<br>Your selections will appear here.<br>Submitting an
+                experience will refresh your selections.</p>
+        </div>
         <div id="sortBox">
             <button id="reset">Reset</button>
             <label for="choices">Sort by:</label>
@@ -14,10 +22,8 @@
                 <option value="5">5 tears</option>
             </select>
         </div>
-        <div class="area" id="messageBox">
-            <p id="direction">Select an eye to view an anecdote.<br>Your selections will appear here.<br>Submitting an
-                experience will refresh your selections.</p>
-        </div>
+    </div>
+    <div id="submit">
 
         <div class="submitCry">
             <h2>Submit an experience.</h2>
@@ -47,6 +53,9 @@
                 <p>(optional) When did this happen?</p><input id="date" type="date">
             </div>
             <div class="area"><button id="add-button">Submit</button></div>
+            <div class="area" id="success">
+                <p>Your experience has been added.</p>
+            </div>
         </div>
     </div>
     <div id="container">

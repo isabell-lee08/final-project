@@ -36,6 +36,7 @@ async function getCry() {
 
 getCry();
 
+// make cry
 let container = document.getElementById("container");
 let cryStory = document.getElementById("messageBox");
 
@@ -70,8 +71,15 @@ function updateDisplay() {
         cryStoryReason.innerHTML = cryList[i].reason;
 
         const cryStoryRate = document.createElement('div');
-        cryStoryRate.classList.add('tearsValue');
-        cryStoryRate.innerHTML = cryList[i].tearsNum;
+        cryStoryRate.setAttribute('title', cryList[i].tearsNum + " tear(s)")
+
+        let numOfIcons = cryList[i].tearsNum;
+
+        for (let i = 0; i < numOfIcons; i++) {
+            const tearIcon = document.createElement('img');
+            tearIcon.src = "/public/images/tearIcon.png";
+            cryStoryRate.appendChild(tearIcon)
+        }
 
         cryStoryContent.appendChild(cryStoryDate);
         cryStoryContent.appendChild(cryStoryRate);
@@ -126,6 +134,8 @@ function updateDisplay() {
     container.appendChild(divider);
 }
 
+
+// add cry
 const addButton = document.getElementById('add-button');
 
 addButton.addEventListener('click', function () {
@@ -171,6 +181,20 @@ async function addCry(reasonValue, dateValue, tearsValue) {
     const data = await response.json();
     cryList = data;
     getCry()
+
+    // success message
+    const success = document.getElementById("success");
+    function showSuccess() {
+        success.style.display = 'inline';
+    }
+
+    showSuccess();
+
+    function hideSuccess() {
+        success.style.display = 'none';
+    }
+
+    setTimeout(hideSuccess, 4000);
 }
 
 // sort by tears
