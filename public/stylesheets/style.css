@@ -8,7 +8,6 @@ body {
   height: 100vh;
 
   background: rgb(255, 255, 255);
-  overflow: hidden;
 
   font-family: "Lekton", monospace;
   font-weight: 600;
@@ -33,7 +32,7 @@ h2 {
 }
 
 #top {
- display: inline;
+  display: inline;
 }
 
 #container {
@@ -53,12 +52,15 @@ h2 {
 
 #form {
   color: rgb(255, 255, 255);
-  flex: 1 1 25%;
+  flex: 1 0 25%;
 
   background: rgb(13, 13, 168);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+
+  max-width: 20em;
+  min-width: 20em;
 
   z-index: 10;
 
@@ -72,11 +74,21 @@ h2 {
 }
 
 #submit {
-  flex: 1 1 20%;
+  flex: 1 0 20%;
   z-index: 10;
+  max-width: 15em;
+  min-width: 15em;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   background: white;
   border: 2px solid black;
+}
+
+#leftside {
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 #success {
@@ -294,17 +306,37 @@ img {
 }
 
 /* waves bg */
-::selection{background-color: rgb(255, 255, 255); color: white;}
-.parallax > use{
-  animation:move-forever 12s linear infinite;
-  &:nth-child(1){animation-delay:-2s;}
-  &:nth-child(2){animation-delay:-2s; animation-duration:7s}
-  &:nth-child(3){animation-delay:-4s; animation-duration:5s}
+::selection {
+  background-color: rgb(255, 255, 255);
+  color: white;
 }
 
-@keyframes move-forever{
-  0%{transform: translate(-90px , 0%)}
-  100%{transform: translate(85px , 0%)} 
+.parallax>use {
+  animation: move-forever 12s linear infinite;
+
+  &:nth-child(1) {
+    animation-delay: -2s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: -2s;
+    animation-duration: 7s
+  }
+
+  &:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 5s
+  }
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate(-90px, 0%)
+  }
+
+  100% {
+    transform: translate(85px, 0%)
+  }
 }
 
 .editorial {
@@ -323,7 +355,74 @@ img {
 }
 
 /*prevent many large-by-comparison ripples by shrinking the height*/
-@media (max-width:50em){
-  .content h1{font-size: 12vmax}
-  .editorial{height:17vw;}
+@media (max-width:50em) {
+  .content h1 {
+    font-size: 12vmax
+  }
+
+  .editorial {
+    height: 17vw;
+  }
+}
+
+/* mobile */
+
+@media screen and (max-width: 700px) {
+  .layout {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #container {
+    order: 3;
+  }
+
+  #leftside {
+    display: flex;
+    flex-wrap: wrap;
+    order: 1;
+
+    width: 100%;
+
+    flex: 0 0 100%;
+  }
+
+  #form {
+    color: rgb(255, 255, 255);
+    flex: 0 0 100%;
+
+    background: rgb(13, 13, 168);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    max-width: 100%;
+
+    z-index: 10;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    order: 2;
+
+  }
+
+  #submit {
+    flex: 0 0 100%;
+    z-index: 10;
+
+    max-width: 100%;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    background: white;
+    border: 2px solid black;
+
+    order: 1;
+  }
+
+  .editorial {
+    display: none;
+  }
 }
